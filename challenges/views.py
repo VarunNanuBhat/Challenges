@@ -22,4 +22,4 @@ def monthly_challenge (request, month):
     else:
         return HttpResponseNotFound("We are sorry, the month you entered is invalid!!!!")
 
-    return HttpResponse (challenge_text)
+    return HttpResponse(challenge_text)
