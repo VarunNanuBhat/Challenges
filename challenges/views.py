@@ -44,5 +44,6 @@ def monthly_challenge(request, month):
         return HttpResponseNotFound("We are sorry, the month you entered is invalid!!!!")
 
     return render(request, "challenges/challenge.html", {
+        "month": month,
         "text": challenge_text,
     })
