@@ -3,18 +3,23 @@ from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 
 # Create your views here.
+def home_page(request):
+    response_data = '''
+        <ul>
+            <li><a href= '/challenges/january'>January</a></li>
+            <li><a href= '/challenges/february'>February</a></li>
+            <li><a href= '/challenges/march'>March</a></li>
+        </ul>
+    '''
+    return HttpResponse(response_data)
 
-
-#def monthly_challenge_url_redirect (request, month):
-
-
-def monthly_challenge (request, month):
+def monthly_challenge(request,month):
     # create a variable to store text, so that it can be updated with if else condition.
     challenge_text = None
     if month == "january":
         challenge_text = "Take a chill pill"
-    elif month == "Jan" or "jan":
-        return HttpResponseRedirect("/challenges/" + "january")
+    #elif month == "Jan" or "jan":
+        #return HttpResponseRedirect("/challenges/" + "january")
     elif month == "february":
         challenge_text = "pass internals"
     elif month == "march":
