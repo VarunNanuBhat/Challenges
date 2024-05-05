@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.template.loader import render_to_string
 
 
 # Create your views here.
@@ -13,6 +14,7 @@ def home_page(request):
     '''
     return HttpResponse(response_data)
 
+'''
 def monthly_challenge(request,month):
     # create a variable to store text, so that it can be updated with if else condition.
     challenge_text = None
@@ -28,3 +30,19 @@ def monthly_challenge(request,month):
         return HttpResponseNotFound("We are sorry, the month you entered is invalid!!!!")
 
     return HttpResponse(challenge_text)
+'''
+
+def monthly_challenge(request, month):
+    challenge_text = None
+    if month == "january":
+        challenge_text = "Take a chill pill"
+    elif month == "february":
+        challenge_text = "pass internals"
+    elif month == "march":
+        challenge_text = "complete DBMS project"
+    else:
+        return HttpResponseNotFound("We are sorry, the month you entered is invalid!!!!")
+
+    return render(request, "challenges/challenge.html", {
+        "text": challenge_text,
+    })
