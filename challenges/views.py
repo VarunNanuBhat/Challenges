@@ -4,15 +4,22 @@ from django.template.loader import render_to_string
 
 
 # Create your views here.
+#def home_page(request):
+ #   response_data = '''
+  #      <ul>
+   #         <li><a href= '/challenges/january'>January</a></li>
+    #        <li><a href= '/challenges/february'>February</a></li>
+     #       <li><a href= '/challenges/march'>March</a></li>
+      #  </ul>
+    #'''
+    #return HttpResponse(response_data)
+
 def home_page(request):
-    response_data = '''
-        <ul>
-            <li><a href= '/challenges/january'>January</a></li>
-            <li><a href= '/challenges/february'>February</a></li>
-            <li><a href= '/challenges/march'>March</a></li>
-        </ul>
-    '''
-    return HttpResponse(response_data)
+    months = ["january", "february", "march"]
+
+    return render(request, "challenges/homepage.html", {
+        "months": months
+    })
 
 '''
 def monthly_challenge(request,month):
@@ -47,3 +54,6 @@ def monthly_challenge(request, month):
         "month": month,
         "text": challenge_text,
     })
+
+
+
