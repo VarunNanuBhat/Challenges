@@ -46,7 +46,7 @@ def monthly_challenge(request, month):
     elif month == "february":
         challenge_text = "pass internals"
     elif month == "march":
-        challenge_text = "complete DBMS project"
+        challenge_text = None
     else:
         return HttpResponseNotFound("We are sorry, the month you entered is invalid!!!!")
 
